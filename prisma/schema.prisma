@@ -22,11 +22,11 @@ model User {
 }
 
 model Movie {
-  id             String      @id @default(uuid())
-  title          String      @unique
-  duration       Int
-  relase_date_At DateTime
-  movie_rent     MovieRent[] @relation("movie")
+  id           String      @id @default(uuid())
+  title        String      @unique
+  duration     Int
+  release_date DateTime
+  movie_rent   MovieRent[] @relation("movie")
 
   @@map("Movies")
 }
