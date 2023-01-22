@@ -10,8 +10,7 @@ export class CreateMovieRentUseCase {
         id: movieId,
       },
     });
-
-    if (movieExists) {
+    if (!movieExists) {
       throw new AppError("Movie does not exists!");
     }
     // verifica se o filme nao esta alugado por outra pessoa
@@ -20,6 +19,7 @@ export class CreateMovieRentUseCase {
         movieId,
       },
     });
+
     if (movieAlreadyRented) {
       throw new AppError("Movie already rented!");
     }
@@ -29,7 +29,8 @@ export class CreateMovieRentUseCase {
         id: userId,
       },
     });
-    if (useExists) {
+
+    if (!useExists) {
       throw new AppError("User does not exists!");
     }
     // criar locação
